@@ -16,7 +16,8 @@ class ProductController extends Controller
     {
       /* return with all records. */
       // $products = Product::all();
-      $products = Product::paginate(5);
+      // $products = Product::paginate(5);
+      $products = Product::paginate(config('constants.PAGINATION'));
       return view('products.index', compact('products'));
       /* return with json format.  */
       // return Product::paginate(5);
