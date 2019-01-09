@@ -1,0 +1,7 @@
+### Laravel_product
+
+![enter image description here](https://lh3.googleusercontent.com/x3BMtSWEGxEfHiTuUOrgxJBjsFx9FY1BTF3II2QDsP-wvBn3RoxuQn3Sv9bsgmeYc-e0kcsYaVcZoSGfZsQNs31A7HfpTqpi6FEsJ7iWZST8-k9FXQ7xUedf-MOETFdkIH2CirvS4dEyzLzXgKKX01j5VngUmLGtoytLB3ix_5T-gWDVeSwYM8g6ZSLF3NvyKDk_1XZiO27iaBh3lpiXDCEfOJKR7pmeEDfeH_0vaHlr39NPxXmDfUkmBI309IKLMeGIzM6zslhhI0hV8-x6-281YyV57zsLWTHWNvvf7ZaKPcVGLx6wSN1jhIhe4YbqYXlRORC3Dn4NUjfiyfOlgCQgL-zUUWmOw9qjbX3Of6hqCLUugmc0AEq6wKdYK__tLuU4IWIOSOcZxY6Zp5OC2iOhPOtF-bfjOEOCjRh7m0Q2Oc6gqhAfXpGXaB5zs1FNSNIUkiNtazdEKQUhkKNvR6v6YVuKfS4y_Vqh1IFAd3hMFIxigs5STy1TBqq-YzZPz10WiD_KxYVffeYkqWoEGb8-RgSjw-jd9xSlvG3RrFedc3Pw70mqVp4Cv8aW-HNUanVHeUl3kMbHmYflUoqlcl4O3u7-lmRJoMRLQKZSZuRL1PYdjXs6lvXK4e7KKfV0nlPamKXxdIoyXRiegmXdIzNd=w767-h553-no)
+
+Laravel is an excellent PHP framework for web development.  It creates a RESTful web app with just a few commands. This is a simple Laravel CRUD app.
+
+The blog article about how to create this app is [here](https://charles4code.blogspot.com/2018/12/a-simple-laravel-crud-app_24.html). 
