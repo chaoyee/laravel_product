@@ -152,9 +152,15 @@ class ProductController extends Controller
     
     public function show_cart()
     {
-      $cart = session()->get('cart');
+      $cart  = session()->get('cart');
+      $total = 0;
+      if (isset($cart)) {  
+        foreach($cart as $id => $product) {
+          $total = $total + $product['prod_subtotal'];
+        }
+      }
 
-      return view('products.cart', compact('cart')); 
+      return view('products.cart', compact('cart', 'total')); 
     }
 
 
@@ -168,14 +174,16 @@ class ProductController extends Controller
         
         if(isset($cart[$id])) {
           // if cart not empty and product exist then increment amount
-          $cart[$id]['prod_amount']++; 
+          $cart[$id]['prod_amount']++;
+          $cart[$id]['prod_subtotal'] = $cart[$id]['prod_price'] * $cart[$id]['prod_amount']; 
         } else {
           // if item not exist in cart then add to cart with amount = 1
           $cart[$id] = [
-            "prod_name"   => $product->prod_name,
-            "prod_desc"   => $product->prod_desc,
-            "prod_price"  => $product->prod_price,
-            "prod_amount" => 1
+            "prod_name"     => $product->prod_name,
+            "prod_desc"     => $product->prod_desc,
+            "prod_price"    => $product->prod_price,
+            "prod_amount"   => 1,
+            "prod_subtotal" => $product->prod_price
           ];
         }
  
@@ -191,6 +199,7 @@ class ProductController extends Controller
     { 
       $cart = session()->get('cart');
       $cart[$id]['prod_amount']++;
+      $cart[$id]['prod_subtotal'] = $cart[$id]['prod_price'] * $cart[$id]['prod_amount'];
       session()->put('cart', $cart);
       session()->flash('success', 'Cart updated successfully');
       return redirect()->back();
@@ -203,6 +212,7 @@ class ProductController extends Controller
         unset($cart[$id]);
       } else {
         $cart[$id]['prod_amount']--;
+        $cart[$id]['prod_subtotal'] = $cart[$id]['prod_price'] * $cart[$id]['prod_amount']; 
       }
       session()->put('cart', $cart);
       session()->flash('success', 'Cart updated successfully');

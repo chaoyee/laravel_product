@@ -38,7 +38,7 @@
     		<td>{{$product['prod_desc']}}</td>
     		<td class="text-right">{{$product['prod_price']}}</td>
     		<td>{{$product['prod_amount']}}</td>
-        <td class="text-right">{{ $product['prod_price'] * $product['prod_amount'] }}
+        <td class="text-right">{{ $product['prod_subtotal'] }}
         <td class="cart_quantity">
           <div class="cart_quantity_button">
             <a class="cart_quantity_up" title="Increase order quantity by 1"
@@ -67,6 +67,9 @@
     	@endforeach
     </tbody>
   </table>
+  <div class="text-right">
+    <h3>Total: {{ $total }}</h3>
+  </div>  
   @if ($cart instanceof \Illuminate\Pagination\LengthAwarePaginator)
     <div class="pagination justify-content-center">
   	  {{ $cart->links() }}
