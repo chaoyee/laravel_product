@@ -149,4 +149,85 @@ class ProductController extends Controller
 
       return view('products.index', compact('products'));
     }
+    
+    public function show_cart()
+    {
+      $cart = session()->get('cart');
+
+      return view('products.cart', compact('cart')); 
+    }
+
+
+    // add to cart
+    public function add_to_cart($id) 
+    {
+      $product = Product::find($id);
+ 
+      if($product) { 
+        $cart = session()->get('cart');
+        
+        if(isset($cart[$id])) {
+          // if cart not empty and product exist then increment amount
+          $cart[$id]['prod_amount']++; 
+        } else {
+          // if item not exist in cart then add to cart with amount = 1
+          $cart[$id] = [
+            "prod_name"   => $product->prod_name,
+            "prod_desc"   => $product->prod_desc,
+            "prod_price"  => $product->prod_price,
+            "prod_amount" => 1
+          ];
+        }
+ 
+        session()->put('cart', $cart);
+        return redirect()->back()->with('success', 'Product added to cart successfully!');
+
+      } else {
+        abort(404);
+      }
+    }
+    
+    public function cart_quantity_up($id) 
+    { 
+      $cart = session()->get('cart');
+      $cart[$id]['prod_amount']++;
+      session()->put('cart', $cart);
+      session()->flash('success', 'Cart updated successfully');
+      return redirect()->back();
+    }
+    
+    public function cart_quantity_down($id) 
+    {
+      $cart = session()->get('cart');
+      if ($cart[$id] == 1) {
+        unset($cart[$id]);
+      } else {
+        $cart[$id]['prod_amount']--;
+      }
+      session()->put('cart', $cart);
+      session()->flash('success', 'Cart updated successfully');
+      return redirect()->back();
+    }
+    
+    
+    // delete an item in the shopping cart
+    public function cart_item_delete($id) 
+    {
+      $cart = session()->get('cart');
+      if (isset($cart[$id])) {
+        unset($cart[$id]);
+        session()->put('cart', $cart);
+        session()->flash('success', 'A cart item deleted successfully!');
+        return redirect()->back();
+      }
+    }
+
+    // empty cart
+    public function empty_cart() 
+    {
+      if (session('cart')) {
+        session()->forget('cart');
+      }
+      return redirect()->back()->with('success', 'Cart is empty!');
+    }
 }

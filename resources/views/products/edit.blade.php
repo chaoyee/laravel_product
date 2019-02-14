@@ -37,6 +37,7 @@
   	  	<label for="prod_qty">Product Qty</label>
 	  	<input type="text" class="form-control" name="prod_qty" value={{ $product->prod_qty }} />	
 	  </div>
+    <a class="btn btn-secondary" href="{{ URL::previous() }}">Back</a>
 	  <button type="submit" class="btn btn-primary">Update</button>
     </form>
   </div>

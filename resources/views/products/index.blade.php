@@ -19,7 +19,7 @@
 		<td><b>Product Description</b></td>
 		<td><b>Product Price</b></td>
 		<td><b>Product Qty</b></td>
-		<td colspan="2"><b>Action</b></td>
+		<td colspan="3"><b>Action</b></td>
 	</tr>
   </thead>
   <tbody>
@@ -30,13 +30,16 @@
   		<td>{{$product->prod_desc}}</td>
   		<td>{{$product->prod_price}}</td>
   		<td>{{$product->prod_qty}}</td>
+      <td><a href="{{ route('products.add_to_cart', $product->id) }}" 
+        class="btn btn-primary"><i class="fa fa-shopping-cart"></i>
+        Add to cart</a></td>
   		<td><a href="{{ route('products.edit', $product->id) }}" 
-  			class="btn btn-primary">Edit</a></td>
+  			class="btn btn-secondary"><i class="fa fa-edit"></i>Edit</a></td>
   		<td>
   			<form method="post" action="{{ route('products.destroy', $product->id) }}">
   				@method('DELETE')
   				@csrf
-  				<button type="submit" class="btn btn-danger">Delete</button>
+  				<button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i>Delete</button>
   			</form>	
   		</td>
   	</tr>

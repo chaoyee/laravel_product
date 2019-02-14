@@ -7,6 +7,7 @@
 	<meta http-equiv="X-UA-Compatiable" content="ie=edge">
 	<title>Laravel 5.7 A simple CRUD Example</title>
   <link href="{{ asset('css/app.css') }}" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 </head>
 <body>
 	<!-- Navbar start -->
@@ -28,6 +29,16 @@
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
       </form>
       <ul class="navbar-nav mr-auto">
+        <!--  -->
+        <li class="nav-item">
+          <a class="nav-link" href="{{ route('products.show_cart') }}"><i class="fa fa-shopping-cart"></i>Cart( 
+            @if(session('cart'))
+              {{ count(session('cart')) }}
+            @else
+              0 
+            @endif
+          )</a>
+        </li>
       <!-- Authentication Links -->
         @guest
           <li class="nav-item">
