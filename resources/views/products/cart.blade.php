@@ -31,7 +31,7 @@
   	</tr>
     </thead>
     <tbody>
-    	@foreach(session('cart') as $id => $product)
+    	@foreach($cart as $id => $product)
     	<tr>
     		<td>{{$id}}</td>
     		<td>{{$product['prod_name']}}</td>
@@ -67,9 +67,9 @@
     	@endforeach
     </tbody>
   </table>
-  @if (session('cart') instanceof \Illuminate\Pagination\LengthAwarePaginator)
+  @if ($cart instanceof \Illuminate\Pagination\LengthAwarePaginator)
     <div class="pagination justify-content-center">
-  	  {{ session('cart')->links() }}
+  	  {{ $cart->links() }}
     </div> 
   @endif
 @else
