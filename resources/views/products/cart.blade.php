@@ -67,14 +67,18 @@
     	@endforeach
     </tbody>
   </table>
-  <div class="text-right">
-    <h3>Total: {{ $total }}</h3>
-  </div>  
   @if ($cart instanceof \Illuminate\Pagination\LengthAwarePaginator)
     <div class="pagination justify-content-center">
   	  {{ $cart->links() }}
     </div> 
   @endif
+  <div class="text-right">
+    <h3>Total: {{ $total }}</h3>
+  </div>
+  </br>
+  <div class="text-right">
+    <a class="btn btn-primary" href="#">CHECKOUT &nbsp<i class="fa fa-angle-double-right"></i></a>
+  </div>  
 @else
   <h3>No item found!</h3>
 @endif
