@@ -33,19 +33,18 @@
       <td><a href="{{ route('products.add_to_cart', $product->id) }}" 
         class="btn btn-primary"><i class="fa fa-shopping-cart"></i>
         Add to cart</a></td>
-       
-        @if(Auth::check() and (Auth::user()->isAdmin() == true))  
-  		    <td><a href="{{ route('products.edit', $product->id) }}" 
-  		    	class="btn btn-secondary"><i class="fa fa-edit"></i>Edit</a></td>
-  		    <td>
-  		    	<form method="post" action="{{ route('products.destroy', $product->id) }}">
-  		    		@method('DELETE')
-  		    		@csrf
-  		    		<button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i>Delete</button>
-  		    	</form>	
-  		    </td>
-        @endif
-
+      <!-- Check if user is an administrator  -->   
+      @if(Auth::check() and (Auth::user()->isAdmin() == true))  
+  		  <td><a href="{{ route('products.edit', $product->id) }}" 
+  		  	class="btn btn-secondary"><i class="fa fa-edit"></i>Edit</a></td>
+  		  <td>
+  		  	<form method="post" action="{{ route('products.destroy', $product->id) }}">
+  		  		@method('DELETE')
+  		  		@csrf
+  		  		<button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i>Delete</button>
+  		  	</form>	
+  		  </td>
+      @endif
   	</tr>
   	@endforeach
   </tbody>
