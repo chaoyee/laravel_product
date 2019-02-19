@@ -19,7 +19,9 @@
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="{{ route('products.create') }}">Add A Product <span class="sr-only">(current)</span></a>
+          @if(Auth::check() and (Auth::user()->isAdmin() == true))
+            <a class="nav-link" href="{{ route('products.create') }}">Add A Product<span class="sr-only">(current)</span></a>
+          @endif
         </li>
       </ul>
       <form method="post" action="{{ route('products.search') }}" class="form-inline my-2 my-lg-0">
@@ -28,7 +30,7 @@
           aria-label="Search" name="keyword">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
       </form>
-      <ul class="navbar-nav mr-auto">
+      <ul class="navbar-nav text-right">
         <!--  -->
         <li class="nav-item">
           <a class="nav-link" href="{{ route('products.show_cart') }}"><i class="fa fa-shopping-cart"></i>Cart( 
