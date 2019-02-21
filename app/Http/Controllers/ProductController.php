@@ -7,6 +7,10 @@ use App\Product;
 
 class ProductController extends Controller
 {
+    public function __construct() {
+      $this->middleware('is_admin')->only(['create', 'store', 'edit', 'update', 'destroy']);
+    }
+
     /**
      * Display a listing of the resource.
      *
