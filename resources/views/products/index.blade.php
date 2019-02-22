@@ -1,16 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="uper">
-	@if(session()->get('success'))
-		<div class="alert alert-success">
-			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-			  <span aria-hidden="true">&times;</span>
-      </button>
-			{{ session()->get('success') }}
-		</div><br/>
-	@endif
-</div>
 <table class="table table-hover">
   <thead>	
 	<tr>

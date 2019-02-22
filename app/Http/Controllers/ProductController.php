@@ -60,7 +60,7 @@ class ProductController extends Controller
         'prod_qty'   => $request->get('prod_qty')
       ]);
       $product->save();
-      return redirect('/products')->with('success','Product has been added!');
+      return redirect('/products')->with('message', ['success','Product has been added!']);
     }
 
     /**
@@ -109,7 +109,7 @@ class ProductController extends Controller
       $product->prod_price = $request->get('prod_price');
       $product->prod_qty   = $request->get('prod_qty');
       $product->save();
-      return redirect('/products')->with('success', 'Product has been updated!');
+      return redirect('/products')->with('message', ['success', 'Product has been updated!']);
     }
 
     /**
@@ -123,7 +123,7 @@ class ProductController extends Controller
         //
       $product = Product::find($id);
       $product->delete();
-      return redirect('/products')->with('success', 'Product has been deleted!');
+      return redirect('/products')->with('message', ['danger', 'Product has been deleted!']);
     }
 
     public function search(Request $request)
@@ -192,7 +192,7 @@ class ProductController extends Controller
         }
  
         session()->put('cart', $cart);
-        return redirect()->back()->with('success', 'Product added to cart successfully!');
+        return redirect()->back()->with('message', ['success', 'Product added to cart successfully!']);
 
       } else {
         abort(404);
@@ -205,7 +205,7 @@ class ProductController extends Controller
       $cart[$id]['prod_amount']++;
       $cart[$id]['prod_subtotal'] = $cart[$id]['prod_price'] * $cart[$id]['prod_amount'];
       session()->put('cart', $cart);
-      session()->flash('success', 'Cart updated successfully');
+      session()->flash('message', ['success', 'Cart updated successfully']);
       return redirect()->back();
     }
     
@@ -219,7 +219,7 @@ class ProductController extends Controller
         $cart[$id]['prod_subtotal'] = $cart[$id]['prod_price'] * $cart[$id]['prod_amount']; 
       }
       session()->put('cart', $cart);
-      session()->flash('success', 'Cart updated successfully');
+      session()->flash('message', ['success', 'Cart updated successfully']);
       return redirect()->back();
     }
     
@@ -231,7 +231,7 @@ class ProductController extends Controller
       if (isset($cart[$id])) {
         unset($cart[$id]);
         session()->put('cart', $cart);
-        session()->flash('success', 'A cart item deleted successfully!');
+        session()->flash('message', ['warning', 'A cart item deleted successfully!']);
         return redirect()->back();
       }
     }
@@ -242,6 +242,6 @@ class ProductController extends Controller
       if (session('cart')) {
         session()->forget('cart');
       }
-      return redirect()->back()->with('success', 'Cart is empty!');
+      return redirect()->back()->with('message', ['warning', 'Cart is empty!']);
     }
 }

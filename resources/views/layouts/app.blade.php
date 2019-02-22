@@ -73,7 +73,10 @@
     </div>
   </nav> 
   <!-- Navbar end -->
-	<div class="container">
+  <div class="container">
+    <!-- Message Box start -->
+    @include('layouts.message')
+    <!-- Message Box end -->
 		@yield('content')
 	</div>
 

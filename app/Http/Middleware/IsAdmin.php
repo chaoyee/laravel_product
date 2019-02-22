@@ -19,7 +19,7 @@ class IsAdmin
         if (Auth::check() && Auth::user()->isAdmin()) {
             return $next($request); 
         } else {
-            return redirect('/')->with('success', 'You are not an authorized user!');
+            return redirect('/')->with('message', ['danger', 'You are not an authorized user!']);
         }
     }
 }
