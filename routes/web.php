@@ -34,4 +34,7 @@ Auth::routes();
 
 Route::resource('users', 'UserController')->except(['create', 'store']);
 
+Route::get('password/change','Auth\ChangePasswordController@showChangeForm')->name('password.showChangeForm');
+Route::post('password/change','Auth\ChangePasswordController@change')->name('password.change');
+
 Route::get('/home', 'HomeController@index')->name('home');
