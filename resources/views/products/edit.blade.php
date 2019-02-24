@@ -23,19 +23,19 @@
   	  @csrf
   	  <div class="form-group">
   	  	<label for="prod_name">Product Name</label>
-  	  	<input type="text" class="form-control" name="prod_name" value={{ $product->prod_name }} />	
+  	  	<input type="text" class="form-control" name="prod_name" value="{{ $product->prod_name }}" />	
   	  </div>
   	  <div class="form-group">
   	  	<label for="prod_desc">Product Description</label>
-  	  	<input type="text" class="form-control" name="prod_desc" value={{ $product->prod_desc }} />	
+  	  	<input type="text" class="form-control" name="prod_desc" value="{{ $product->prod_desc }}" />	
   	  </div>
   	  <div class="form-group">
   	  	<label for="prod_price">Product Price</label>
-  	  	<input type="text" class="form-control" name="prod_price" value={{ $product->prod_price }} />	
+  	  	<input type="text" class="form-control" name="prod_price" value="{{ $product->prod_price }}" />	
   	  </div>
   	  <div class="form-group">
   	  	<label for="prod_qty">Product Qty</label>
-	  	<input type="text" class="form-control" name="prod_qty" value={{ $product->prod_qty }} />	
+	  	<input type="text" class="form-control" name="prod_qty" value="{{ $product->prod_qty }}" />	
 	  </div>
     <a class="btn btn-secondary" href="{{ URL::previous() }}">Back</a>
 	  <button type="submit" class="btn btn-primary">Update</button>

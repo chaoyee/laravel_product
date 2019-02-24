@@ -32,4 +32,6 @@ Route::get('/empty_cart', 'ProductController@empty_cart')->name('products.empty_
 
 Auth::routes();
 
+Route::resource('users', 'UserController')->except(['create', 'store']);
+
 Route::get('/home', 'HomeController@index')->name('home');

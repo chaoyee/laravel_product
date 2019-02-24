@@ -109,7 +109,7 @@ class ProductController extends Controller
       $product->prod_price = $request->get('prod_price');
       $product->prod_qty   = $request->get('prod_qty');
       $product->save();
-      return redirect('/products')->with('message', ['success', 'Product has been updated!']);
+      return redirect('/products')->with('message', ['success', 'The product has been updated!']);
     }
 
     /**
@@ -123,7 +123,7 @@ class ProductController extends Controller
         //
       $product = Product::find($id);
       $product->delete();
-      return redirect('/products')->with('message', ['danger', 'Product has been deleted!']);
+      return redirect('/products')->with('message', ['danger', 'The product has been deleted!']);
     }
 
     public function search(Request $request)
