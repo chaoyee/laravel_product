@@ -21,7 +21,7 @@
   		<td>{{$user->birthday}}</td>
   		<td>{{$user->address->country}}</td>
       <!-- Check if user is an administrator  -->   
-      @if(Auth::check() and (Auth::user()->isAdmin() == true))  
+      @isAdmin
   		  <td><a href="{{ route('users.edit', $user->id) }}" 
   		  	class="btn btn-secondary"><i class="fa fa-edit"></i>Edit</a></td>
   		  <td>
@@ -31,7 +31,7 @@
   		  		<button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i>Delete</button>
   		  	</form>	
   		  </td>
-      @endif
+      @endisAdmin
   	</tr>
   	@endforeach
   </tbody>

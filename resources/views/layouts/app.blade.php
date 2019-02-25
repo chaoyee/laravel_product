@@ -18,14 +18,14 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
       <ul class="navbar-nav mr-auto">
-        @if(Auth::check() and (Auth::user()->isAdmin() == true))
+        @isAdmin
         <li class="nav-item active">
           <a class="nav-link" href="{{ route('products.create') }}">Add A Product<span class="sr-only">(current)</span></a> 
         </li>
         <li class="nav-item active">
           <a class="nav-link" href="{{ route('users.index') }}">Users Admin<span class="sr-only">(current)</span></a>
         </li>
-        @endif
+        @endisAdmin
       </ul>
       <form method="post" action="{{ route('products.search') }}" class="form-inline my-2 my-lg-0">
       	@csrf
@@ -73,7 +73,7 @@
                   {{ __('Change Password') }}
               </a>
               <a class="dropdown-item" href="{{ route('users.edit', Auth::user()->id) }}">
-                  {{ __('Edit Profile') }}
+                  {{ __('My Account') }}
               </a>
             </div>
           </li>
