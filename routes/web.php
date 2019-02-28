@@ -37,4 +37,13 @@ Route::resource('users', 'UserController')->except(['create', 'store']);
 Route::get('password/change','Auth\ChangePasswordController@showChangeForm')->name('password.showChangeForm');
 Route::post('password/change','Auth\ChangePasswordController@change')->name('password.change');
 
+Route::resource('orders', 'OrderController');
+
+Route::get('checkout/checkout', 'CheckoutController@checkout')->name('checkout.checkout');
+Route::get('checkout/payment', 'CheckoutController@payment')->name('checkout.payment');
+Route::post('checkout/order_confirmation', 'CheckoutController@order_confirmation')->name('checkout.order_confirmation');
+Route::view('checkout/payment_gateway', 'checkout.payment_gateway')->name('checkout.payment_gateway');
+
+Route::get('checkout/return_page', 'CheckoutController@return_page')->name('checkout.return_page');
+
 Route::get('/home', 'HomeController@index')->name('home');

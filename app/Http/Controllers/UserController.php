@@ -111,7 +111,8 @@ class UserController extends Controller
         $address->zip      = $request->get('zip');
         $user->save();
         $address->save();
-        return redirect('/users')->with('message', ['success', 'The user has been updated!']); 
+        return "<script>alert('The user has been updated!');history.go(-2);</script>";
+        // return redirect()->back()->with('message', ['success', 'The user has been updated!']); 
     }
 
     /**

@@ -16,8 +16,8 @@
   		<td><b>Product Description</b></td>
   		<td><b>Product Price</b></td>
   		<td><b>Order Quantity</b></td>
-      <td><b>Sub Total</b></td>
-  		<td colspan="3"><b>Action</b></td>
+      <td><b>Action</b></td>
+  		<td><b>Sub Total</b></td>
   	</tr>
     </thead>
     <tbody>
@@ -28,7 +28,7 @@
     		<td>{{$product['prod_desc']}}</td>
     		<td class="text-right">{{$product['prod_price']}}</td>
     		<td>{{$product['prod_amount']}}</td>
-        <td class="text-right">{{ $product['prod_subtotal'] }}
+
         <td class="cart_quantity">
           <div class="cart_quantity_button">
             <a class="cart_quantity_up" title="Increase order quantity by 1"
@@ -45,9 +45,9 @@
             ><i class="fa fa-minus"></i></a>
           </div>
         </td>
-        <td class="cart_total">
-          <p class="cart_total_price text-right"></p>
-        </td>
+        
+        <td class="text-right">{{ $product['prod_subtotal'] }}
+
         <td class="cart_item_delete">
           <a class="cart_item_delete" title="Delete This Item" 
             href="{{ route('products.cart_item_delete', $id) }}">
@@ -67,7 +67,7 @@
   </div>
   </br>
   <div class="text-right">
-    <a class="btn btn-primary" href="#">CHECKOUT &nbsp<i class="fa fa-angle-double-right"></i></a>
+    <a class="btn btn-primary" href="{{ route('checkout.checkout') }} ">CHECKOUT &nbsp<i class="fa fa-angle-double-right"></i></a>
   </div>  
 @else
   <h3>No item found!</h3>
