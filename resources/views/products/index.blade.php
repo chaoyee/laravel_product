@@ -24,7 +24,7 @@
         class="btn btn-primary"><i class="fa fa-shopping-cart"></i>
         Add to cart</a></td>
       <!-- Check if user is an administrator  -->   
-      @if(Auth::check() and (Auth::user()->isAdmin() == true))  
+      @isAdmin 
   		  <td><a href="{{ route('products.edit', $product->id) }}" 
   		  	class="btn btn-secondary"><i class="fa fa-edit"></i>Edit</a></td>
   		  <td>
@@ -34,7 +34,7 @@
   		  		<button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i>Delete</button>
   		  	</form>	
   		  </td>
-      @endif
+      @endisAdmin
   	</tr>
   	@endforeach
   </tbody>

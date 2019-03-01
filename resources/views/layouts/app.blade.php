@@ -25,6 +25,9 @@
         <li class="nav-item active">
           <a class="nav-link" href="{{ route('users.index') }}">Users Admin<span class="sr-only">(current)</span></a>
         </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="{{ route('orders.index') }}">Orders Admin<span class="sr-only">(current)</span></a>
+        </li>
         @endisAdmin
       </ul>
       <form method="post" action="{{ route('products.search') }}" class="form-inline my-2 my-lg-0">

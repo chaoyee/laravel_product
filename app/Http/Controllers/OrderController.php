@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Order;
+use App\OrderDetail;
 
 class OrderController extends Controller
 {
@@ -19,6 +21,8 @@ class OrderController extends Controller
     public function index()
     {
         //
+        $orders = Order::paginate(config('constants.PAGINATION'));
+        return view('orders.index', compact('orders'));
     }
 
     /**
@@ -51,6 +55,10 @@ class OrderController extends Controller
     public function show($id)
     {
         //
+        $order = Order::find($id);
+        $order_details = OrderDetail::where('order_id', $id)
+          ->paginate(config('constants.PAGINATION'));
+        return view('orders.show', compact('order', 'order_details'));
     }
 
     /**
