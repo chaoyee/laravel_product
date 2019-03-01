@@ -14,7 +14,7 @@
     <td><b>Product Description</b></td>
 		<td><b>QTY</b></td>
 		<td><b>Sub-Total</b></td>
-		<td colspan="3"><b>Action</b></td>
+		<td colspan="3"><b></b></td>
 	</tr>
   </thead>
   <tbody>
@@ -28,7 +28,8 @@
   		<td>{{ $order_detail->sub_total }}</td>
       
       <!-- Check if user is an administrator  -->   
-      @isAdmin  
+      @isAdmin
+        <!--   
   		  <td><a href="{{-- route('orders.show', $order->id) --}}" 
   		  	class="btn btn-secondary"><i class="fa fa-edit"></i>Show Details</a></td>
   		  <td>
@@ -38,6 +39,7 @@
   		  		<button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i>Delete</button>
   		  	</form>	
   		  </td>
+        -->
       @endisAdmin
   	</tr>
   	@endforeach
@@ -48,4 +50,7 @@
 	  {{ $order_details->links() }}
   </div> 
 @endif
+<div>
+  <a class="btn btn-secondary btn-md" href="javascript:history.go(-1)">Back</a>
+</div>
 @endsection

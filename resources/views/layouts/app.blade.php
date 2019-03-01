@@ -64,17 +64,31 @@
             </a>
 
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+              <!-- Logout -->
               <a class="dropdown-item" href="{{ route('logout') }}" 
                 onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                   {{ __('Logout') }}
               </a>
-
+              
+              <!-- Change Password -->
               <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                   @csrf
               </form>
               <a class="dropdown-item" href="{{ route('password.showChangeForm') }}">
                   {{ __('Change Password') }}
               </a>
+
+              <!-- My Orders -->
+              <a class="dropdown-item" href="{{ route('logout') }}" 
+                onclick="event.preventDefault();document.getElementById('orders-form').submit();">
+                  {{ __('My Orders') }}
+              </a>
+              <form id="orders-form" action="{{ route('orders.index') }}" method="GET" style="display: none;">
+                @csrf
+                <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+              </form>
+
+              <!-- My Account -->
               <a class="dropdown-item" href="{{ route('users.edit', Auth::user()->id) }}">
                   {{ __('My Account') }}
               </a>
