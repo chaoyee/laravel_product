@@ -13,4 +13,8 @@ class Product extends Model
       'prod_price',
       'prod_qty'
     ];
+
+    public function orderDetail() {
+    	return $this->hasMany('App\OrderDetail', 'product_id');
+    }
 }

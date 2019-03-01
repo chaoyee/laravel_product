@@ -1,0 +1,21 @@
+<?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Order extends Model
+{
+    //
+	  protected $fillable = [
+      'order_total', 'order_date', 'order_status'
+	  ];
+
+    public function orderDetail() {
+    	return $this->hasMany('App\OrderDetail', 'order_id');
+    }
+
+    public function user() {
+    	return $this->belongsTo('App\User', 'user_id');
+    }
+}
