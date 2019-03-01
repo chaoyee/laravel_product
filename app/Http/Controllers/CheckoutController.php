@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
+use App\Order;
+use App\OrderDetail;
 
 class CheckoutController extends Controller
 {    
@@ -66,6 +69,51 @@ class CheckoutController extends Controller
       // if paid,
       if (true) { 
         // save items to order.
+        $user_id = auth()->user()->id;
+        $cart  = session()->get('cart');
+        
+        $total = 0;
+        if (isset($cart)) {  
+          foreach($cart as $id => $product) {
+            $total = $total + $product['prod_subtotal'];
+          }
+        }
+        $shipping = $total * 0.05;
+        $total    = $total + $shipping;
+        
+        DB::beginTransaction();
+
+        try {
+          // Order
+          $order = new Order([
+            'user_id'      => $user_id,
+            'order_total'  => $total,
+            'order_date'   => now(),
+            'order_status' => 'order placed'
+            // 'created'      => now();
+          ]);
+          $order->save();
+          $order_id = $order->id;  // get the order id 
+          
+          // OrderDetail
+          if (isset($cart)) {  
+            foreach($cart as $id => $product) {
+              $order_detail = new OrderDetail([
+                'order_id'   => $order_id,
+                'product_id' => $id,
+                'sub_qty'    => $product['prod_amount'],
+                'sub_total'  => $product['prod_subtotal']
+                // 'created'      => now();  
+              ]);
+              $order_detail->save();
+            }
+          }
+        
+          DB::commit();
+        } catch (\Throwable $e) {
+          DB::rollback();
+          throw $e;
+        }
       
         // clear the shopping cart.
         if (session('cart')) {

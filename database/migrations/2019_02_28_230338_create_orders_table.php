@@ -16,7 +16,7 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->index();
-            $table->decimal('ordet_total', 15, 2)->default(0);
+            $table->decimal('order_total', 15, 2)->default(0);
             $table->date('order_date')->useCurrent();
             $table->string('order_status')->default('order placed');
             $table->timestamps();

@@ -8,7 +8,7 @@ class Order extends Model
 {
     //
 	  protected $fillable = [
-      'order_total', 'order_date', 'order_status'
+      'user_id', 'order_total', 'order_date', 'order_status'
 	  ];
 
     public function orderDetail() {
