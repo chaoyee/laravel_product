@@ -22,19 +22,19 @@
 			@csrf
 			<div class="form-group">
 				<label for="prod_name">Product Name:</label>
-				<input type="text" class="form-control" name="prod_name"/>
+				<input type="text" class="form-control" name="prod_name" required/>
 			</div>
 			<div class="form-group">
 				<label for="prod_desc">Product Description:</label>
-				<input type="text" class="form-control" name="prod_desc"/>
+				<input type="text" class="form-control" name="prod_desc" required/>
 			</div>
             <div class="form-group">
 				<label for="prod_price">Product Price:</label>
-				<input type="text" class="form-control" name="prod_price"/>
+				<input type="text" class="form-control" name="prod_price" required/>
 			</div>
 			<div class="form-group">
 				<label for="prod_qty">Product Quantity:</label>
-				<input type="text" class="form-control" name="prod_qty"/>
+				<input type="text" class="form-control" name="prod_qty" required/>
 			</div>
 			<button type="submit"class="btn btn-primary">Add</button>
 			<a href="{{ route('products.index') }}" class="btn btn-info">Back</a>

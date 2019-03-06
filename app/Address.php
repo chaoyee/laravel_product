@@ -8,6 +8,7 @@ class Address extends Model
 {
     //
 	  protected $fillable = [
+      'user_id',
       'tel',
       'address',
       'district',
@@ -19,6 +20,7 @@ class Address extends Model
     protected function validator(array $data)
     {
         return Validator::make($data, [
+            'user_id' => ['integer'],
             'tel' => ['string', 'nullable'],
             'address' => ['string', 'nullable'],
             'district' => ['string', 'nullable'],

@@ -74,6 +74,10 @@ class UserController extends Controller
         //
         $user = User::find($id);
         $address = $user->address;
+        if (!$address) {
+          $address = new Address(['user_id' => $user->id]);
+          $address->save();
+        } 
         return view('users.edit', compact('user', 'address'));
     }
 
