@@ -19,7 +19,11 @@
   		<td>{{$user->name}}</td>
   		<td>{{$user->email}}</td>
   		<td>{{$user->birthday}}</td>
-  		<td>{{$user->address->country}}</td>
+      @if($user->address)
+  		  <td>{{$user->address->country}}</td>
+      @else
+        <td></td>
+      @endif
       <!-- Check if user is an administrator  -->   
       @isAdmin
   		  <td><a href="{{ route('users.edit', $user->id) }}" 
