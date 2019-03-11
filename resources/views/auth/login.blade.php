@@ -39,6 +39,13 @@
                             </div>
                         </div>
 
+                        <div class="form-group">
+                          <div class="col-md-6 offset-md-4">
+                            <p>administrator: admin/12345678</p>
+                            <p>guest: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp         guest/12345678</p>
+                          </div>
+                        </div>
+
                         <div class="form-group row">
                             <div class="col-md-6 offset-md-4">
                                 <div class="form-check">

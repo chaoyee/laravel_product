@@ -29,4 +29,10 @@ class DatabaseSeeder extends Seeder
     ];
     DB::table('products')->insert($arrayOfSeed);
     }
+    $arrayOfUsersSeed = [
+      ['id' => 1, 'name' => 'admin', 'email' => 'admin@test.com', 'password' => '12345678' , 'is_admin' => true],  
+      ['id' => 2, 'name' => 'guest', 'email' => 'guest@test.com', 'password' => '12345678' , 'is_admin' => false]  
+    ];
+    DB::table('users')->insert($arrayOfUsersSeed);
+    }
 }
