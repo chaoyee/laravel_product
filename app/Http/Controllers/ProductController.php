@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Product;
 use App\User;
 use App\Address;
+use Image;
 
 class ProductController extends Controller
 {
@@ -86,7 +87,9 @@ class ProductController extends Controller
     {
       //
       $product = Product::find($id);
-      return view('products.edit', compact('product'));
+      $images  = glob(public_path('/prod_imgs').'/'.strval($product->id).'_*.png');
+      
+      return view('products.edit', compact('product', 'images'));
     }
 
     /**
@@ -103,7 +106,8 @@ class ProductController extends Controller
         'prod_name'  => 'required',
         'prod_desc'  => 'required',
         'prod_price' => 'required|integer',
-        'prod_qty'   => 'required|integer'
+        'prod_qty'   => 'required|integer',
+        'prod_img[]' => 'image'
       ]);
       $product = Product::find($id);
       $product->prod_name  = $request->get('prod_name');
@@ -111,6 +115,15 @@ class ProductController extends Controller
       $product->prod_price = $request->get('prod_price');
       $product->prod_qty   = $request->get('prod_qty');
       $product->save();
+      
+      // Save upload files
+      $images = $request->file('prod_img');
+      foreach ($images as $key => $image) {
+        $img = Image::make($image);
+        $img->fit(600,600);
+        $img->save(public_path('/prod_imgs').'/'.$id.'_'.$key.'.png');
+      }
+  
       return redirect('/products')->with('message', ['success', 'The product has been updated!']);
     }
 
@@ -246,4 +259,5 @@ class ProductController extends Controller
       }
       return redirect()->back()->with('message', ['warning', 'Cart is empty!']);
     }
+
 }

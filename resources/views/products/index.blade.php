@@ -16,6 +16,7 @@
   	@foreach($products as $product)
   	<tr>
   		<td>{{$product->id}}</td>
+      <td><img src="{{ url('/prod_imgs') }}/{{ $product->id }}_0.png" width="50px" height="50px" /></td>
   		<td>{{$product->prod_name}}</td>
   		<td>{{$product->prod_desc}}</td>
   		<td>{{$product->prod_price}}</td>
