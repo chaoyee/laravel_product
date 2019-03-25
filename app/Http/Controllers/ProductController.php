@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
 use App\Product;
 use App\User;
 use App\Address;
@@ -21,13 +22,17 @@ class ProductController extends Controller
      */
     public function index()
     {
-      /* return with all records. */
-      // $products = Product::all();
-      // $products = Product::paginate(5);
-      $products = Product::paginate(config('constants.PAGINATION'));
-      return view('products.index', compact('products'));
-      /* return with json format.  */
-      // return Product::paginate(5);
+      try {
+        /* return with all records. */
+        // $products = Product::all();
+        // $products = Product::paginate(5);
+        $products = Product::paginate(config('constants.PAGINATION'));
+        return view('products.index', compact('products'));
+        /* return with json format.  */
+        // return Product::paginate(5);
+      } catch (\Throwable $e) {
+          throw $e;
+      }  
     }
 
     /**
